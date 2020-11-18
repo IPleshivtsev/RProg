@@ -1,0 +1,23 @@
+.controls {
+    padding: 10px 20px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+@media all and (min-width: 1024px) {
+    .controls {
+        order: 4;
+        margin: 0 24px;
+        padding: 0;
+        right: 0;
+        top: 70px;
+        position: absolute;
+    }
+}
+
+@media all and (min-width: 1540px) {
+    .controls {
+        position: absolute;
+    }
+}

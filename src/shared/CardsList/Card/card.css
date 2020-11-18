@@ -1,0 +1,29 @@
+.card {
+    background-color: var(--white);
+    border-radius: 7px;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 14px;
+    padding: 14px;
+    position: relative;
+}
+
+.card > * {
+    flex: 1 1 100%;
+}
+
+@media all and (min-width: 1024px) {
+    .card {
+        align-items: center;
+        height: 205px;
+    }
+    .card > * {
+        flex: unset;
+    }
+}
+
+@media all and (min-width: 1540px) {
+    .card {
+        padding: 0 30px;
+    }
+}
