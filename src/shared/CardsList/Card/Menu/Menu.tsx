@@ -3,6 +3,7 @@ import styles from './menu.css';
 import {MenuIcon} from "../../../Icons";
 import {Dropdown} from "../../../Dropdown";
 
+
 export function Menu() {
   return (
       <div className={styles.menu}>
@@ -13,8 +14,12 @@ export function Menu() {
               </button>
           }
           >
-          Menu
-          ClosedButton
+              <div className={styles.dropdown}>
+                  Menu
+                  <button className={styles.closeButton}>
+                  Закрыть
+                  </button>
+              </div>
           </Dropdown>
       </div>
   );

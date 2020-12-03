@@ -11,20 +11,22 @@ import {GenericList} from "./shared/GenericList/GenericList";
 import {Dropdown} from "./shared/Dropdown";
 
 const LIST = [
-    {As: 'li' as const, text: 'some'},
-    {As: 'li' as const, text: 'other some'},
-    {As: 'li' as const, text: 'some'}
-].map(generateId)
+    {As: 'li' as const, text: 'some', id: '1'},
+    {As: 'li' as const, text: 'other some', id: '2'},
+    {As: 'li' as const, text: 'some', id: '3'}
+]
 
 function AppComponent() {
     const [list, setList] = React.useState(LIST);
 
     const handleItemClick = (id: string) => {
+        debugger;
         setList(list.filter((item) => item.id != id));
     }
 
     const handleAdd = () => {
-        setList(list.concat(generateId({text: generateRandomString(), As: 'li' as const})))
+        debugger;
+        setList(list.concat({text: generateRandomString(), As: 'li' as const, id: (parseInt(list[list.length-1].id)+1).toString()}))
     }
 
     return (
