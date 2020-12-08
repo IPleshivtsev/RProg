@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './menu.css';
-import {MenuIcon} from "../../../Icons";
+import {Icon, MenuIcon, MenuItem} from "../../../Icons";
 import {Dropdown} from "../../../Dropdown";
 
 
@@ -15,7 +15,14 @@ export function Menu() {
           }
           >
               <div className={styles.dropdown}>
-                  Menu
+                  <ul>
+                      <MenuItem iconName={"comment"} textButton={"Комментарии"} />
+                      <MenuItem iconName={"share"} textButton={"Поделиться"} />
+                      <MenuItem iconName={"hide"} textButton={"Скрыть"} />
+                      <MenuItem iconName={"save"} textButton={"Сохранить"} />
+                      <MenuItem iconName={"complain"} textButton={"Пожаловаться"} />
+                  </ul>
+
                   <button className={styles.closeButton}>
                   Закрыть
                   </button>
