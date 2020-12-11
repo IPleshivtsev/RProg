@@ -5,50 +5,22 @@ import { Layout } from './shared/Layout';
 import {Header} from "./shared/Header";
 import {Content} from "./shared/Content";
 import {CardsList} from "./shared/CardsList";
-import {assignId, generateId, generateRandomString} from "./utils/react/generateRandomIndex";
-import {merge} from "./utils/js/merge";
-import {GenericList} from "./shared/GenericList/GenericList";
-import {Dropdown} from "./shared/Dropdown";
-import {Icon} from "./shared/Icons";
-
-const LIST = [
-    {As: 'li' as const, text: 'some', id: '1'},
-    {As: 'li' as const, text: 'other some', id: '2'},
-    {As: 'li' as const, text: 'some', id: '3'}
-]
+import {EColor, Text} from "./shared/Text";
+import {Break} from "./shared/Break";
 
 function AppComponent() {
-    const [list, setList] = React.useState(LIST);
-
-    const handleItemClick = (id: string) => {
-        debugger;
-        setList(list.filter((item) => item.id != id));
-    }
-
-    const handleAdd = () => {
-        debugger;
-        setList(list.concat({text: generateRandomString(), As: 'li' as const, id: (parseInt(list[list.length-1].id)+1).toString()}))
-    }
 
     return (
         <Layout>
-            <Header />
+            <Header/>
             <Content>
-                <CardsList />
-                <button onClick={handleAdd}>Add Element</button>
-                <ul>
-                    <GenericList list={list.map(merge({onClick: handleItemClick}))} />
-                </ul>
-                <div style={{padding: 20}}>
+                <CardsList/>
                 <br/>
-                <Dropdown
-                    onClose={() => console.log('closed')}
-                    onOpen={() => console.log('opened')}
-                    isOpen={false}
-                    button={<button>Test</button>}>
-                    <CardsList />
-                </Dropdown>
-                </div>
+                <Text size={20} mobileSize={28} bold color={EColor.green}>Label1</Text>
+                <Break size={8} mobileSize={16} top/>
+                <Text size={20}>Label2</Text>
+                <Break size={8} mobileSize={16} top/>
+                <Text size={20} mobileSize={16}>Label3</Text>
             </Content>
         </Layout>
     );
