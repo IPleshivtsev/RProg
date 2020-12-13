@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './menu.css';
 import {Icon, MenuIcon, MenuItem} from "../../../Icons";
 import {Dropdown} from "../../../Dropdown";
+import {Text, EColors} from "../../../Text";
+import {MenuItemsList} from "./MenuItemsList";
 
 
 export function Menu() {
@@ -15,16 +17,11 @@ export function Menu() {
           }
           >
               <div className={styles.dropdown}>
-                  <ul>
-                      <MenuItem iconName={"comment"} textButton={"Комментарии"} />
-                      <MenuItem iconName={"share"} textButton={"Поделиться"} />
-                      <MenuItem iconName={"hide"} textButton={"Скрыть"} />
-                      <MenuItem iconName={"save"} textButton={"Сохранить"} />
-                      <MenuItem iconName={"complain"} textButton={"Пожаловаться"} />
-                  </ul>
-
+                  <MenuItemsList postId={"1234"}/>
                   <button className={styles.closeButton}>
-                  Закрыть
+                  <Text mobileSize={12} size={14} color={EColors.grey66}>
+                    Закрыть
+                  </Text>
                   </button>
               </div>
           </Dropdown>
