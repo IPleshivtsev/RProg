@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './menu.css';
-import {Icon, MenuIcon, MenuItem} from "../../../Icons";
+import {Icon} from "../../../Icons";
 import {Dropdown} from "../../../Dropdown";
 import {Text, EColors} from "../../../Text";
 import {MenuItemsList} from "./MenuItemsList";
@@ -12,7 +12,7 @@ export function Menu() {
           <Dropdown
               button={
               <button className={styles.menuButton}>
-                  <MenuIcon />
+                  <Icon IconName={"Menu"} Size={16} />
               </button>
           }
           >
