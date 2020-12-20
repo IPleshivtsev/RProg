@@ -5,9 +5,10 @@ import {WarningIcon} from "./WarningIcon";
 import {CommentIcon} from "./CommentIcon";
 import {ShareIcon} from "./ShareIcon";
 import {SaveIcon} from "./SaveIcon";
+import {AnonIcon} from "./AnonIcon";
 
-type tIcons = "Block" | "Menu" | "Warning" | "Comment" | "Share" | "Save";
-export type tSizes = 8 | 16 | 32 | 64;
+type tIcons = "Block" | "Menu" | "Warning" | "Comment" | "Share" | "Save" | "Anon";
+export type tSizes = 8 | 16 | 32 | 50 | 64;
 
 export interface ISize {
     Size?: tSizes;
@@ -45,6 +46,10 @@ export function Icon(iconData: IIcon) {
         case "Save":
             return (
               <SaveIcon Size={size} />
+            );
+        case "Anon":
+            return (
+              <AnonIcon Size={size} />
             );
     }
 }
