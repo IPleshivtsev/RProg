@@ -23,6 +23,7 @@
   "dependencies": {
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/react": "^16.9.55",
+    "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "express": "^4.17.1",
     "generator-layout": "^1.0.0",
