@@ -1,7 +1,14 @@
 import React from 'react';
 import styles from './textcontent.css';
 
-export function TextContent() {
+interface ITextContent {
+    author: string;
+    title: string;
+    url: string;
+    created?: string;
+}
+
+export function TextContent({author, title, url, created}: ITextContent) {
   return (
       <div className={styles.textContent}>
         <div className={styles.metaData}>
@@ -11,16 +18,16 @@ export function TextContent() {
                 src="https://avatars.mds.yandex.net/get-zen_doc/28064/pub_5a62fa1c482677a2e649388c_5a62fa379b403c54425784e3/scale_1200"
                 alt="avatar"
             />
-            <a href="#user-url" className={styles.userName}>Дмитрий Гришин</a>
+            <a href="#user-url" className={styles.userName}>{author}</a>
           </div>
           <span className={styles.createdAt}>
             <span className={styles.publishedLabel}>опубликовано </span>
-            4 часа назад
+              {created}
         </span>
         </div>
         <h2 className={styles.title}>
-          <a href="#post-url" className={styles.postLink}>
-            Следует отметить, что новая модель организационной...
+          <a href={url} className={styles.postLink}>
+              {title}
           </a>
         </h2>
       </div>

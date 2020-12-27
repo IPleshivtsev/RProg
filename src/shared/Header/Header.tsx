@@ -10,6 +10,7 @@ export function Header() {
       <SearchBlock />
       <ThreadTitle />
       <SortBlock />
+
     </header>
   );
 }
