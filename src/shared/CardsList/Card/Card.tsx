@@ -4,24 +4,25 @@ import {TextContent} from "./TextContent";
 import {Preview} from "./Preview";
 import {Menu} from "./Menu";
 import {Controls} from "./Controls";
+import {generateRandomString} from "../../../utils/react/generateRandomIndex";
 
 interface IPostsData {
     author: string;
-    id: string;
     title: string;
-    url: string;
     preview: string;
     num_comments: number;
     score: number;
     created?: string;
 }
 
-export function Card({author, id, title, url, preview, num_comments, score, created}: IPostsData) {
+export function Card({author, title, preview, num_comments, score, created}: IPostsData) {
+  var idCard = generateRandomString();
+
   return (
-    <li className={styles.card} id={id}>
-      <TextContent author={author} title={title} url={url} created={created}/>
+    <li className={styles.card} id={idCard}>
       <Preview url={preview}/>
-      <Menu />
+      <TextContent author={author} title={title} id={idCard} created={created}/>
+      <Menu idCard={idCard}/>
       <Controls score={score} num_comments={num_comments}/>
     </li>
   );

@@ -26,6 +26,7 @@ interface ITextProps {
   desktopSize?: TSizes;
   color?: EColors;
   bold?: boolean;
+  style?: styles;
 }
 
 export function Text(props: ITextProps) {
@@ -37,7 +38,8 @@ export function Text(props: ITextProps) {
     size,
     mobileSize,
     desktopSize,
-    tabletSize
+    tabletSize,
+    style,
   } = props;
 
   const classes = classNames(
@@ -50,7 +52,7 @@ export function Text(props: ITextProps) {
   );
 
   return (
-<As className={classes}>
+<As className={classes} style={style}>
   {children}
 </As>
   );

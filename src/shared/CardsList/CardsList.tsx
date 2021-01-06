@@ -11,9 +11,7 @@ export function CardsList() {
           {postsArr.map(item => {
           return (<Card
               author={item.author}
-              id={item.id}
               title={item.title}
-              url={item.url}
               preview={item.preview}
               num_comments={item.num_comments}
               score={item.score}

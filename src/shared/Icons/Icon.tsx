@@ -10,46 +10,50 @@ import {AnonIcon} from "./AnonIcon";
 type tIcons = "Block" | "Menu" | "Warning" | "Comment" | "Share" | "Save" | "Anon";
 export type tSizes = 8 | 16 | 32 | 50 | 64;
 
-export interface ISize {
+export interface IIconData {
     Size?: tSizes;
+    isActive: boolean
 }
 
 interface IIcon {
     IconName: tIcons;
     Size?: tSizes;
+    isActive?: boolean
 }
 
 export function Icon(iconData: IIcon) {
     let size = iconData.Size == null ? 8 : iconData.Size;
+    let isActive = iconData.isActive || false;
+
 
     switch (iconData.IconName) {
         case "Block":
             return (
-                <BlockIcon Size={size} />
+                <BlockIcon Size={size} isActive={isActive}/>
             );
         case "Menu":
             return (
-                <MenuIcon Size={size} />
+                <MenuIcon Size={size} isActive={isActive}/>
             );
         case "Warning":
             return (
-                <WarningIcon Size={size} />
+                <WarningIcon Size={size} isActive={isActive}/>
             );
         case "Comment":
             return (
-                <CommentIcon Size={size} />
+                <CommentIcon Size={size} isActive={isActive}/>
             );
         case "Share":
             return (
-                <ShareIcon Size={size} />
+              <ShareIcon Size={size} isActive={isActive}/>
             );
         case "Save":
             return (
-              <SaveIcon Size={size} />
+              <SaveIcon Size={size} isActive={isActive}/>
             );
         case "Anon":
             return (
-              <AnonIcon Size={size} />
+              <AnonIcon Size={size} isActive={isActive}/>
             );
     }
 }

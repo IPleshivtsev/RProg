@@ -15,7 +15,7 @@
 @media all and (min-width: 1024px) {
     .card {
         align-items: center;
-        height: 205px;
+        align-items: flex-start;
     }
     .card > * {
         flex: unset;

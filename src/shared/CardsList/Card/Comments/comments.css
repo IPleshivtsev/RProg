@@ -1,0 +1,14 @@
+.commentsBlock {
+    order: 8;
+    margin-left: 11px;
+    margin-top: 40px;
+}
+
+.commentsText {
+    vertical-align: super;
+    margin-left: 3px;
+}
+
+.comments {
+    margin-top: 10px;
+}

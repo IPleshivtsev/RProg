@@ -1,13 +1,11 @@
 .textContent {
     display: flex;
-    flex-flow: row wrap;
     flex-direction: column;
     padding: 22px 20px 13px;
 }
 
 .metaData {
     display: flex;
-    flex-flow: row nowrap;
     align-items: center;
     font-size: 10px;
     line-height: 12px;
@@ -70,12 +68,9 @@
     }
 
     .metaData {
-        flex-flow: row-reverse nowrap;
         order: 3;
         margin-top: 8px;
         margin-left: 11px;
-        margin-top: 45px;
-        position: absolute;
     }
 
     .title {
@@ -107,15 +102,5 @@
         font-size: 14px;
         line-height: 16px;
         margin-left: 0px;
-    }
-}
-
-@media all and (min-width: 1540px) {
-    .textContent {
-        /* flex-basis: 672px; */
-    }
-
-    .metaData {
-        position: absolute;
     }
 }

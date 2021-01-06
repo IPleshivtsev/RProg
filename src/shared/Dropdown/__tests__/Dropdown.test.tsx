@@ -11,13 +11,13 @@ configure({ adapter: new Adapter() });
 
 describe('Dropdown', () => {
     test('should render', () => {
-        const wrapper = shallow(<Dropdown children={<div />} button={<button />} />)
+        const wrapper = shallow(<Dropdown children={<div />} parId={'1'} />)
         expect(wrapper).toBeDefined();
         expect(wrapper.find('div.container').isEmptyRender()).toBeFalsy();
     })
 
     test('should render (snapshot)', () => {
-        const wrapper = shallow(<Dropdown children={<div />} button={<button />} />)
+        const wrapper = shallow(<Dropdown children={<div />} parId={'1'} />)
 
         expect(wrapper).toMatchSnapshot();
     })

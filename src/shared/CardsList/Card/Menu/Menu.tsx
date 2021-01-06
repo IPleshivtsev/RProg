@@ -5,17 +5,29 @@ import {Dropdown} from "../../../Dropdown";
 import {Text, EColors} from "../../../Text";
 import {MenuItemsList} from "./MenuItemsList";
 
+interface IMenu {
+    idCard: string;
+    isOpen?: boolean;
+}
 
-export function Menu() {
+export function Menu({idCard, isOpen}: IMenu) {
+    const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen);
+
+    const handleOpen = () => {
+        if(isOpen == undefined) {
+            setIsDropdownOpen(!isDropdownOpen)
+        }
+    }
+
   return (
       <div className={styles.menu}>
-          <Dropdown
-              button={
-              <button className={styles.menuButton}>
-                  <Icon IconName={"Menu"} Size={16} />
-              </button>
-          }
-          >
+          <button className={styles.menuButton} onClick={handleOpen}>
+              <Icon IconName={"Menu"} Size={16} />
+          </button>
+
+          {isDropdownOpen && (
+
+          <Dropdown onClose={() => {setIsDropdownOpen(false); }} parId={idCard}>
               <div className={styles.dropdown}>
                   <MenuItemsList postId={"1234"}/>
                   <button className={styles.closeButton}>
@@ -24,7 +36,7 @@ export function Menu() {
                   </Text>
                   </button>
               </div>
-          </Dropdown>
+          </Dropdown>)}
       </div>
   );
 }

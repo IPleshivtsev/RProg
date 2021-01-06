@@ -1,40 +1,41 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import styles from './dropdown.css';
+import ReactDOM from "react-dom";
 
 interface IDropdownProps {
-  button: React.ReactNode;
   children: React.ReactNode;
-  isOpen?: boolean;
-  onOpen?: () => void;
   onClose?: () => void;
+  parId: string;
 }
 
-const NOOP = () => {};
+export function Dropdown({children, onClose, parId}: IDropdownProps) {
+    const ref = useRef<HTMLDivElement>(null);
 
-export function Dropdown({button, children, isOpen, onClose = NOOP, onOpen = NOOP}: IDropdownProps) {
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen);
+    useEffect(() => {
+        function handleClick(event: MouseEvent) {
+            if(event.target instanceof Node && !ref.current?.contains(event.target))
+            {
+                onClose?.();
+            }
+        }
 
-  React.useEffect(() => setIsDropdownOpen(isOpen), [isOpen]);
-  React.useEffect(() => isDropdownOpen ? onOpen() : onClose(), [isDropdownOpen])
+        document.addEventListener('click', handleClick);
 
-  const handleOpen = () => {
-      if(isOpen == undefined) {
-          setIsDropdownOpen(!isDropdownOpen)
-      }
-  }
+        return () => {
+            document.removeEventListener('click', handleClick);
+        }
+    }, []);
 
-  return (
-      <div className={styles.container}>
-        <div onClick={handleOpen}>
-          { button }
-        </div>
-        {isDropdownOpen && (
-            <div className={styles.listContainer}>
-              <div className={styles.list} onClick={() => setIsDropdownOpen(false)}>
-                { children }
+  const node = document.querySelector(`#${parId}`);
+  if (!node) return null;
+
+  return ReactDOM.createPortal((
+      <div className={styles.container} ref={ref}>
+          <div className={styles.listContainer}>
+              <div className={styles.list}>
+                  { children }
               </div>
-            </div>
-        )}
+          </div>
       </div>
-  );
+  ), node);
 }

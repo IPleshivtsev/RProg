@@ -1,0 +1,20 @@
+.comment {
+    margin-bottom: 5px;
+}
+
+.commentButtons {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.commentButtons button {
+    margin-left: 5px;
+}
+
+.commentButton {
+    float: right;
+    width: 150px;
+    height: 30px;
+    background-color: #d45f1a;
+    color: white;
+}

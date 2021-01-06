@@ -1,9 +1,9 @@
 import * as React from "react";
-import {ISize} from "./Icon";
+import {IIconData} from "./Icon";
 
-export function AnonIcon(size: ISize) {
+export function AnonIcon({Size, isActive}: IIconData) {
     return (
-        <svg width={size.Size} height={size.Size} viewBox="0 0 50 50" fill="none">
+        <svg width={Size} height={Size} viewBox="0 0 50 50" fill="none">
             <circle cx="25" cy="25" r="25" fill="url(#pattern0)"/>
             <defs>
                 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
