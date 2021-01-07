@@ -1,8 +1,8 @@
 import React, {useEffect, useRef} from 'react';
 import ReactDOM from 'react-dom';
 import styles from './post.css';
-import {CommentForm} from "../CommentForm";
 import {Comments} from "../CardsList/Card/Comments";
+import {CommentFormContainer} from "../CommentFormContainer";
 
 interface IPost {
     id: string;
@@ -40,7 +40,7 @@ export function Post(props: IPost) {
           <p>Есть над чем задуматься</p>
         </div>
 
-          <CommentForm />
+          <CommentFormContainer />
           <Comments />
       </div>
       ), node);

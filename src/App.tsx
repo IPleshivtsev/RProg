@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './main.global.css';
 import { hot } from 'react-hot-loader/root';
 import { Layout } from './shared/Layout';
@@ -9,32 +9,32 @@ import {useToken} from "./hooks/useToken";
 import {tokenContext} from "./shared/context/tokenContext";
 import {UserContextProvider} from "./shared/context/userContext";
 import {PostsContextProvider} from "./shared/context/postsContext";
-import {commentContext} from "./shared/context/commentContext";
+import {createStore} from "redux";
+import {Provider} from 'react-redux';
+import {composeWithDevTools} from "redux-devtools-extension";
+import {rootReducer} from "./store";
+
+const store = createStore(rootReducer, composeWithDevTools());
 
 function AppComponent() {
-    const [commentValue, setCommentValue] = useState('');
     const [token] = useToken();
-
-    const CommentProvider = commentContext.Provider;
+    const TokenProvider = tokenContext.Provider;
 
     return (
-        <CommentProvider value={{
-            value: commentValue,
-            onChange: setCommentValue,
-        }}>
-            <tokenContext.Provider value={token}>
-                <UserContextProvider>
-                    <PostsContextProvider>
-                        <Layout>
-                            <Header/>
-                            <Content>
-                                <CardsList/>
-                            </Content>
-                        </Layout>
-                    </PostsContextProvider>
-                </UserContextProvider>
-            </tokenContext.Provider>
-        </CommentProvider>
+        <Provider store={store}>
+                <TokenProvider value={token}>
+                    <UserContextProvider>
+                        <PostsContextProvider>
+                            <Layout>
+                                <Header/>
+                                <Content>
+                                    <CardsList/>
+                                </Content>
+                            </Layout>
+                        </PostsContextProvider>
+                    </UserContextProvider>
+                </TokenProvider>
+        </Provider>
     );
 }
 

@@ -18,12 +18,10 @@ export function Comment({commentString = '', author, isOpen}: IComment) {
   const handleOpen = () => {
     if(isOpen == undefined) {
       setIsCommentsOpen(!isCommentsOpen)
-      debugger;
     }
   }
 
   useEffect(() => {
-    debugger;
     if(isCommentsOpen == true)
     {
       if(ref.current) {
