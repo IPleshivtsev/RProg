@@ -14,6 +14,20 @@ interface IPostsData {
     created?: string;
 }
 
+export type TCommentData = {
+    author: string;
+    created: string;
+    body: string;
+}
+
+interface IPostData {
+    title: string;
+    author: string;
+    created?: string;
+    selfText: string;
+    comments: TCommentData[];
+}
+
 export function usePostsData() {
     const [data, setData] = useState<Array<IPostsData>>([]);
     const token = useContext(tokenContext)
@@ -27,7 +41,6 @@ export function usePostsData() {
                 {
                     const postsData: Array<any> = resp.data.data.children;
                     const postsArr: Array<IPostsData> = [];
-
                     postsData.map(item => (
                         postsArr.push({
                             author: item.data.author || '',
@@ -43,6 +56,50 @@ export function usePostsData() {
                         })
                     ));
                     setData(postsArr);
+                }
+            })
+            .catch(console.log);
+    }, [token])
+
+    return [data]
+}
+
+export function usePostData(postId: string) {
+    const [data, setData] = useState<IPostData>({title: '', author: '', selfText: '', comments: [] });
+    const token = useContext(tokenContext)
+
+    useEffect(() => {
+        axios.get(`https://oauth.reddit.com/comments/${postId}?limit=20`, {
+            headers: {Authorization: `bearer ${token}`}
+        })
+            .then((resp) => {
+
+                if(resp.data !== undefined)
+                {
+                    const postData: IPostData = {
+                        title: resp.data[0].data.children[0].data.title,
+                        author: resp.data[0].data.children[0].data.author,
+                        created: resp.data[0].data.children[0].data.created_utc ?
+                            new Date(resp.data[0].data.children[0].data.created_utc * 1000).toLocaleDateString() + ' ' +
+                            new Date(resp.data[0].data.children[0].data.created_utc * 1000).toLocaleTimeString() : '',
+                        selfText: resp.data[0].data.children[0].data.selfText,
+                        comments: [],
+                    };
+
+                    const commentsData: Array<TCommentData> = [];
+                    const commentsArr: Array<any> = resp.data[1].data.children;
+
+                    commentsArr.map(item => (
+                        commentsData.push({
+                            author: item.data.author || '',
+                            created: item.data.created_utc ?
+                                new Date(item.data.created_utc * 1000).toLocaleDateString() + ' ' +
+                                new Date(item.data.created_utc * 1000).toLocaleTimeString() : '',
+                            body: item.data.body || '',
+                        })
+                    ));
+                    postData.comments = commentsData;
+                    setData(postData);
                 }
             })
             .catch(console.log);

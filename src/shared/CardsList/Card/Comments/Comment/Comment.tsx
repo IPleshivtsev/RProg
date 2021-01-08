@@ -8,22 +8,21 @@ import {userContext} from "../../../../context/userContext";
 interface IComment {
   commentString: string;
   author?: string;
+  created: string;
   isOpen?: boolean;
 }
 
-export function Comment({commentString = '', author, isOpen}: IComment) {
+export function Comment({commentString = '', author, created, isOpen}: IComment) {
   const [isCommentsOpen, setIsCommentsOpen] = React.useState(isOpen);
   const ref = useRef<HTMLTextAreaElement>(null);
 
   const handleOpen = () => {
     if(isOpen == undefined) {
       setIsCommentsOpen(!isCommentsOpen)
-      debugger;
     }
   }
 
   useEffect(() => {
-    debugger;
     if(isCommentsOpen == true)
     {
       if(ref.current) {
@@ -35,8 +34,14 @@ export function Comment({commentString = '', author, isOpen}: IComment) {
 
   return (
       <div className={styles.comment}>
+        <span style={{float: "left"}}>
         <UserLink author={author || 'Аноним'} />
-        <div style={{marginTop: '5px'}}>
+        </span>
+        <span>
+          <span>опубликовано </span>
+          {created}
+        </span>
+        <div style={{marginTop: '15px'}}>
           <Text size={14}>{commentString}</Text>
         </div>
         <div className={styles.commentButtons}>

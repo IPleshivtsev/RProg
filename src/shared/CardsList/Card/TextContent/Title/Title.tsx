@@ -19,7 +19,7 @@ export function Title({author, id, title}: ITitle) {
         </a>
 
         {isModalOpened && (
-            <Post id={`${id}_post`} onClose={() => {setIsModalOpened(false); }}/>
+            <Post id={`${id}`} onClose={() => {setIsModalOpened(false); }}/>
         )}
       </h2>
   );

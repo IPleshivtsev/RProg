@@ -5,23 +5,24 @@ import {EColors, Text} from "../../../Text";
 import {userContext} from "../../../context/userContext";
 import {UserLink} from "../TextContent/UserLink";
 import {Comment} from "./Comment";
+import {TCommentData} from "../../../../hooks/usePostsData";
 
-class IComments {
-  isOpen?: boolean
+interface IComments {
+    comments: TCommentData[]
+    isOpen?: boolean
 }
 
-export function Comments({isOpen}: IComments) {
-  const {name} = useContext(userContext)
-
+export function Comments({comments, isOpen}: IComments) {
   return (
       <div className={styles.commentsBlock}>
-        <div className={styles.comments}>
-          <Comment commentString={'Комментарий 1'} author={name}/>
-          <Comment commentString={'Комментарий 2'} author={name} />
-          <Comment commentString={'Комментарий 3'} author={name} />
-          <Comment commentString={'Комментарий 4'} author={name} />
-          <Comment commentString={'Комментарий 5'} author={name} />
-          <Comment commentString={'Комментарий 6'} author={name} />
+          <div className={styles.comments}>
+              {comments.map(item => {
+                  return (<Comment
+                      commentString={item.body}
+                      author={item.author}
+                      created={item.created}
+                  />)
+              })}
         </div>
       </div>
   );
