@@ -1,7 +1,7 @@
-import {useContext, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
-import {tokenContext} from "../shared/context/tokenContext";
-import {debug} from "webpack";
+import {useSelector} from "react-redux";
+import {RootState} from "../store";
 
 interface IPostsData {
     author: string;
@@ -30,7 +30,7 @@ interface IPostData {
 
 export function usePostsData() {
     const [data, setData] = useState<Array<IPostsData>>([]);
-    const token = useContext(tokenContext)
+    const token = useSelector<RootState, string>(state => state.token);
 
     useEffect(() => {
         axios.get('https://oauth.reddit.com/best', {
@@ -66,7 +66,7 @@ export function usePostsData() {
 
 export function usePostData(postId: string) {
     const [data, setData] = useState<IPostData>({title: '', author: '', selfText: '', comments: [] });
-    const token = useContext(tokenContext)
+    const token = useSelector<RootState, string>(state => state.token);
 
     useEffect(() => {
         axios.get(`https://oauth.reddit.com/comments/${postId}?limit=20`, {

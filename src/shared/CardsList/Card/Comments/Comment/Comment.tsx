@@ -1,9 +1,8 @@
-import React, {useContext, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import styles from './comment.css';
 import {UserLink} from "../../TextContent/UserLink";
 import {EColors, Text} from "../../../../Text";
 import {Icon} from "../../../../Icons";
-import {userContext} from "../../../../context/userContext";
 
 interface IComment {
   commentString: string;

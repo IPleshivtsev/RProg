@@ -4,7 +4,6 @@ import {TextContent} from "./TextContent";
 import {Preview} from "./Preview";
 import {Menu} from "./Menu";
 import {Controls} from "./Controls";
-import {generateRandomString} from "../../../utils/react/generateRandomIndex";
 
 interface IPostsData {
     author: string;

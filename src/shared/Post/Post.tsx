@@ -4,9 +4,7 @@ import styles from './post.css';
 import {Comments} from "../CardsList/Card/Comments";
 import {CommentFormContainer} from "../CommentFormContainer";
 import {usePostData} from "../../hooks/usePostsData";
-import {TextContent} from "../CardsList/Card/TextContent";
 import {UserLink} from "../CardsList/Card/TextContent/UserLink";
-import {Card} from "../CardsList/Card";
 
 interface IPost {
     id: string;
