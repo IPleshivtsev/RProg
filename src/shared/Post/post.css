@@ -1,7 +1,12 @@
 .modal {
-    position: fixed;
-    top: 50px;
-    left: 50%;
+    position: absolute;
+    top: 150px;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    word-wrap: break-word;
     border: 1px solid black;
     background-color: white;
     border-radius: 10px;
