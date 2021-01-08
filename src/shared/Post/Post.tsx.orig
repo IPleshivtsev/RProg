@@ -2,11 +2,14 @@ import React, {useEffect, useRef} from 'react';
 import ReactDOM from 'react-dom';
 import styles from './post.css';
 import {Comments} from "../CardsList/Card/Comments";
+<<<<<<< HEAD
 import {CommentFormContainer} from "../CommentFormContainer";
+=======
 import {usePostData} from "../../hooks/usePostsData";
 import {TextContent} from "../CardsList/Card/TextContent";
 import {UserLink} from "../CardsList/Card/TextContent/UserLink";
 import {Card} from "../CardsList/Card";
+>>>>>>> master
 
 interface IPost {
     id: string;
@@ -48,8 +51,16 @@ export function Post(props: IPost) {
             <div className={styles.content}>
                 <p>{data.selfText}</p>
             </div>
-          <CommentFormContainer />
+            <CommentForm/>
             <Comments comments={data.comments}/>
         </div>
+<<<<<<< HEAD
+
+          <CommentFormContainer />
+          <Comments />
+      </div>
+      ), node);
+=======
     ), node);
+>>>>>>> master
 }
