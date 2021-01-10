@@ -2,7 +2,6 @@ import express from 'express';
 import ReactDOM from 'react-dom/server';
 import { indexTemplate } from './indexTemplate';
 import {App} from "../App";
-import axios from 'axios';
 
 const app = express();
 
@@ -15,19 +14,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/auth', (req, res) => {
-    axios.post(
-        'https://www.reddit.com/api/v1/access_token',
-        `grant_type=authorization_code&code=${req.query.code}&redirect_uri=http://localhost:3000/auth`,
-        {
-            auth: { username: process.env.CLIENT_ID, password: 'GEadcFzJJ1p5DYs-VgzKGtlml17oHQ'},
-            headers: {'Content-type': 'application/x-www-form-urlencoded'}
-        }
-    ).then(({data}) => {
-        res.send(
-            indexTemplate(ReactDOM.renderToString(App()), data['access_token']),
-        );
-    })
-        .catch(console.log);
+    res.send(
+        indexTemplate(ReactDOM.renderToString(App()), req.query.code),
+    );
 });
 
 app.listen(3000, () => {
