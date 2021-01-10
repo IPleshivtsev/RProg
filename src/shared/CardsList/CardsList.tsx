@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import styles from './cardslist.css';
 import {Card} from "./Card";
 import {postsContext} from "../context/postsContext";
+import {generateRandomString} from "../../utils/react/generateRandomIndex";
 
 export function CardsList() {
   const postsArr = useContext(postsContext);
@@ -10,6 +11,7 @@ export function CardsList() {
         <ul>
           {postsArr.map(item => {
           return (<Card
+              key={generateRandomString()}
               author={item.author}
               id={item.id}
               title={item.title}

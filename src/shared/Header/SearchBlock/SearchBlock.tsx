@@ -2,10 +2,9 @@ import React, {useContext} from 'react';
 import styles from './searchblock.css';
 import {UserBlock} from "./UserBlock";
 import {userContext} from "../../context/userContext";
-import {useUserData} from "../../../hooks/useUserData";
 
 export function SearchBlock() {
-    const {data, loading} = useUserData()
+    const {data, loading} = useContext(userContext);
 
   return (
       <div className={styles.searchBlock}>

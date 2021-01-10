@@ -18,7 +18,7 @@ interface IPostsData {
 export function Card({author, id, title, preview, num_comments, score, created}: IPostsData) {
 
   return (
-    <li className={styles.card} id={`${id}_card`}>
+    <li className={styles.card}>
       <Preview url={preview}/>
       <TextContent author={author} title={title} id={id} created={created}/>
       <Menu idCard={`${id}_card`}/>
