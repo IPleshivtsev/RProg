@@ -7,14 +7,19 @@ import {Content} from "./shared/Content";
 import {CardsList} from "./shared/CardsList";
 import {UserContextProvider} from "./shared/context/userContext";
 import {PostsContextProvider} from "./shared/context/postsContext";
-import {createStore} from "redux";
-import {Provider} from 'react-redux';
+import {applyMiddleware, createStore} from "redux";
+import {Provider, useDispatch} from 'react-redux';
 import {composeWithDevTools} from "redux-devtools-extension";
-import {rootReducer} from "./store";
+import {rootReducer} from "./store/reducer";
+import thunk from "redux-thunk";
+import {saveTokenRequestAsync} from "./store/token/actions";
 
-const store = createStore(rootReducer, composeWithDevTools());
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 function AppComponent() {
+    //const dispatch = useDispatch();
+    //dispatch(saveTokenRequestAsync(window.__code__));
+
     return (
         <Provider store={store}>
             <UserContextProvider>
