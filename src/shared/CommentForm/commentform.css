@@ -4,10 +4,19 @@
     min-height: 100px;
 }
 
+.input[aria-invalid] {
+    border-color: red;
+}
+
 .button {
     float: right;
     width: 150px;
     height: 30px;
     background-color: #d45f1a;
     color: white;
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: default;
 }

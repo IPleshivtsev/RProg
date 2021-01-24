@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './comments.css';
 import {Comment} from "./Comment";
 import {TCommentData} from "../../../../hooks/usePostsData";
+import {generateRandomString} from "../../../../utils/react/generateRandomIndex";
 
 interface IComments {
     comments: TCommentData[]
@@ -14,6 +15,7 @@ export function Comments({comments, isOpen}: IComments) {
           <div className={styles.comments}>
               {comments.map(item => {
                   return (<Comment
+                      key={generateRandomString()}
                       commentString={item.body}
                       author={item.author}
                       created={item.created}
