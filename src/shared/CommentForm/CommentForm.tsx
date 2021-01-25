@@ -1,8 +1,11 @@
 import React from 'react';
 import styles from './commentform.css';
 import {useFormik} from 'formik';
+import {useDispatch} from "react-redux";
+import {updateComment} from "../../store/reducer";
 
 export function CommentForm() {
+    const dispatch = useDispatch();
 
     const formik = useFormik({
         initialValues: {
@@ -18,6 +21,7 @@ export function CommentForm() {
             return errors;
         },
         onSubmit: values => {
+            dispatch(updateComment(values.comment));
             alert('Форма отправлена!');
         }
     });
