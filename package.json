@@ -28,6 +28,7 @@
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "express": "^4.17.1",
+    "formik": "^2.2.6",
     "generator-layout": "^1.0.0",
     "nodemon": "^2.0.4",
     "react": "^16.13.1",
