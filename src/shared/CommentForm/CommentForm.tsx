@@ -9,7 +9,7 @@ export function CommentForm() {
             comment: ''
         },
         validate: values => {
-            const errors = {comment: ''};
+            const errors = {} as {comment?: string};
             if (!values.comment) {
                 errors.comment = 'Поле обязательно для заполнения';
             } else if (values.comment.length <= 3) {
