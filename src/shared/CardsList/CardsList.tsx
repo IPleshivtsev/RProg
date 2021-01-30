@@ -11,7 +11,7 @@ export function CardsList() {
   const [loading, setLoading] = useState(false);
   const [errorLoading, setErrorLoading] = useState('');
   const [nextAfter, setNextAfter] = useState('');
-  const [countLoad, setCountLoad] = useState(-2);
+  const [countLoad, setCountLoad] = useState(0);
 
   const bottomOfList = useRef<HTMLDivElement>(null);
 
