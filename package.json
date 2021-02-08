@@ -8,9 +8,9 @@
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "dev": "cross-env NODE_ENV=development CLIENT_ID=1UllBdBhYKgJcg node ./bin/dev.js",
+    "dev": "cross-env NODE_ENV=development CLIENT_ID=azjDbb7-Wwm4fg SECRET=fMLFEKvSBYYbrIFaUVuM9Td0cUrgeA node ./bin/dev.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./dist/server/server.js"
+    "start": "env CLIENT_ID=azjDbb7-Wwm4fg SECRET=fMLFEKvSBYYbrIFaUVuM9Td0cUrgeA node ./dist/server/server.js"
   },
   "keywords": [],
   "author": "",
