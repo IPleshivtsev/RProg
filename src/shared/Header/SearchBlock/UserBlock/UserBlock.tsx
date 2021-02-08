@@ -11,9 +11,11 @@ interface IUserBlockProps {
 }
 
 export function UserBlock({ avatarSrc, username, loading }: IUserBlockProps) {
+  const href_u = `https://www.reddit.com/api/v1/authorize?client_id=${process.env.CLIENT_ID}&response_type=code&state=random_string&redirect_uri=https://www.skillbox-reactapp.herokuapp.com/auth&duration=permanent&scope=read submit identity`;
+
   return (
       <a
-          href="https://www.reddit.com/api/v1/authorize?client_id=1UllBdBhYKgJcg&response_type=code&state=random_string&redirect_uri=https://www.skillbox-reactapp.herokuapp.com/auth&duration=permanent&scope=read submit identity"
+          href={href_u}
           className={styles.userBox}
       >
         <div className={styles.avatarBox}>
