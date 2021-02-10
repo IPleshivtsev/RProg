@@ -28,6 +28,8 @@
     "@types/react-router-dom": "^5.1.7",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
+    "effector": "^21.8.2",
+    "effector-react": "^21.2.1",
     "express": "^4.17.1",
     "formik": "^2.2.6",
     "generator-layout": "^1.0.0",
