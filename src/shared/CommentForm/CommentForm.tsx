@@ -3,8 +3,24 @@ import styles from './commentform.css';
 import {useFormik} from 'formik';
 import {useDispatch} from "react-redux";
 import {updateComment} from "../../store/reducer";
+import {makeAutoObservable} from "mobx";
+import {observer} from "mobx-react-lite";
 
-export function CommentForm() {
+class Comment {
+    value = 'Привет из MobX';
+
+    constructor() {
+        makeAutoObservable(this);
+    }
+
+    updateValue(newValue: string) {
+        this.value = newValue;
+    }
+}
+
+const myComment = new Comment();
+
+export const CommentForm = observer(() => {
     const dispatch = useDispatch();
 
     const formik = useFormik({
@@ -13,15 +29,16 @@ export function CommentForm() {
         },
         validate: values => {
             const errors = {} as {comment?: string};
-            if (!values.comment) {
+            if (!myComment.value) {
                 errors.comment = 'Поле обязательно для заполнения';
-            } else if (values.comment.length <= 3) {
+            } else if (myComment.value.length <= 3) {
                 errors.comment = 'Введите больше 3-х символов';
             }
             return errors;
         },
         onSubmit: values => {
-            dispatch(updateComment(values.comment));
+            myComment.updateValue(myComment.value);
+            dispatch(updateComment(myComment.value));
             alert('Форма отправлена!');
         }
     });
@@ -33,11 +50,11 @@ export function CommentForm() {
               name="comment"
               className={styles.input}
               onChange={formik.handleChange}
-              value={formik.values.comment}
+              value={myComment.value}
               aria-invalid={formik.errors.comment ? 'true' : undefined}
           />
           {formik.touched.comment && formik.errors.comment && (<div>{formik.errors.comment}</div>)}
           <button type="submit" className={styles.button}>Комментировать</button>
       </form>
   );
-}
+})
