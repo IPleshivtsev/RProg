@@ -1,8 +1,5 @@
 import {Action, ActionCreator} from "redux";
 import axios from "axios";
-import {indexTemplate} from "../../server/indexTemplate";
-import ReactDOM from "react-dom/server";
-import {App} from "../../App";
 import {ThunkAction} from "redux-thunk";
 import {RootState} from "../reducer";
 
@@ -41,7 +38,7 @@ export const saveTokenRequestAsync = (code: string): ThunkAction<void, RootState
             'https://www.reddit.com/api/v1/access_token',
             `grant_type=authorization_code&code=${code}&redirect_uri=http://localhost:3000/auth`,
             {
-                auth: {username: process.env.CLIENT_ID || '', password: process.env.SECRET || ''},
+                auth: {username: '1UllBdBhYKgJcg', password: 'GEadcFzJJ1p5DYs-VgzKGtlml17oHQ'},
                 headers: {'Content-type': 'application/x-www-form-urlencoded'}
             }
             )
