@@ -1,14 +1,11 @@
 import React, {ChangeEvent, FormEvent, useState} from 'react';
 import styles from './commentform.css';
-import {atom, useRecoilState} from "recoil";
+import { useState as useStateHS } from '@hookstate/core';
 
-const commentText = atom({
-    key: 'commentText',
-    default: 'Привет из Recoil',
-});
+const commentText = 'Привет из Recoil';
 
 export function CommentForm() {
-    const [comment, setComment] = useRecoilState(commentText);
+    const comment = useStateHS(commentText);
 
     const [touched, setTouched] = useState(false);
     const [valueError, setValueError] = useState('');
@@ -25,12 +22,12 @@ export function CommentForm() {
     }
 
     const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) =>  {
-        setComment(event.target.value);
+        comment.set(x => x = event.target.value);
         console.log(event.target.value);
     }
 
     function validateValue() {
-        if (comment.length <= 3) return 'Введите больше 3-х символов';
+        if (comment.get().length <= 3) return 'Введите больше 3-х символов';
         return '';
     }
 
@@ -41,7 +38,7 @@ export function CommentForm() {
               name="comment"
               className={styles.input}
               onChange={handleChange}
-              value={comment}
+              value={comment.get()}
               aria-invalid={valueError ? 'true' : undefined}
           />
             {touched && valueError && (<div>{valueError}</div>)}
